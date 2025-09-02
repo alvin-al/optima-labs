@@ -644,7 +644,7 @@ function HowItWorks() {
         {/* Kolom Kiri: Konten Teks (3/5) */}
         <div className='lg:w-1/2'>
           <div className='mx-auto max-w-2xl px-6 py-24 sm:px-8 lg:px-12'>
-            <div className='text-center lg:text-left mb-'>
+            <div className='text-center lg:text-left mb-8'>
               <span className='block text-sm font-medium tracking-wide text-[#8c7662] mb-3'>
                 BOOKING PROCESS
               </span>
@@ -677,7 +677,7 @@ function HowItWorks() {
               ))}
             </div>
 
-            <div className='mt-8 text-center lg:text-left'>
+            <div className='mt-16 text-center lg:text-left'>
               <a
                 href={buildWALink()}
                 target='_blank'
