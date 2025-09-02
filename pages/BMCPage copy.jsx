@@ -17,6 +17,24 @@ import {
   Languages,
 } from "lucide-react";
 
+/**
+ * BMC — Bali Medical Concierge (v3)
+ * Human+ inspired, but 100% original UX & copy. WhatsApp-first, conversion-focused.
+ * Tailwind CSS + lucide-react + framer-motion
+ * ------------------------------------------------------------
+ * Highlights:
+ * - Sticky Quick‑Book bar (mobile & desktop)
+ * - "How can we optimize you today?" symptom picker that pre-fills WhatsApp
+ * - 24/7 in‑home care positioning, licensed nurses, MD oversight
+ * - Featured packages + transparent pricing
+ * - FAQ accordions, trust badges, testimonials
+ * - JSON‑LD for local SEO
+ *
+ * Setup:
+ * 1) Replace WHATSAPP_NUMBER with your E.164 number (e.g., 6281234567890)
+ * 2) Optional: tune default copy and pricing in data objects below
+ */
+
 const WHATSAPP_NUMBER = "6285817778911"; // e.g., 6281234567890
 
 const DEFAULT_TEXT = `Hi BMC, I'd like to book an in‑villa treatment.\nName: ____\nLocation pin: ____\nArea (Canggu/Seminyak/Ubud/Uluwatu/Other): ____\nSymptoms/Goals: ____\nService (if known): ____\nPreferred time today: ____\nNotes: ____`;
@@ -33,14 +51,14 @@ export default function BMCPage() {
       <Hero />
       <USPs />
       <Optimizer />
-      <FeaturedPackages />
+      {/*  <FeaturedPackages />
       <Services />
       <HowItWorks />
       <Reviews />
       <FAQ />
       <ContactCTA />
       <Footer />
-      {/* <QuickBookDock />
+      <QuickBookDock />
       <Schema /> */}
     </div>
   );
@@ -67,11 +85,13 @@ function TopBar() {
 /* -------------------------------- Header -------------------------------- */
 function Header() {
   return (
-    <div className='sticky top-0 z-40 bg-[#dae2cb] backdrop-blur'>
+    <div className='sticky top-0 z-40 bg-[#dae2cb] backdrop-blur border-b border-slate-100'>
       <div className='max-w-6xl mx-auto px-4 py-3 flex items-center justify-between'>
         <div className='flex items-center gap-2'>
           <Sparkles className='h-5 w-5 text-green-950' />
-          <span className='font-medium tracking-tight'>Optima Labs</span>
+          <span className='font-semibold tracking-tight'>
+            BMC — Bali Medical Concierge
+          </span>
         </div>
         <nav className='hidden md:flex items-center gap-6 text-sm text-green-950'>
           <a href='#optimize' className='hover:text-green-700'>
@@ -104,6 +124,52 @@ function Header() {
 }
 
 /* --------------------------------- Hero --------------------------------- */
+// function Hero() {
+//   return (
+//     <header
+//       className='relative min-h-[100svh] isolate overflow-hidden'
+//       aria-label='Home medical care in Bali'
+//     >
+//       {/* Fullscreen background */}
+//       <div className='absolute inset-0 -z-10'>
+//         <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center" />
+//         <div className='absolute inset-0 bg-black/40' />
+//       </div>
+
+//       {/* Content */}
+//       <div className='relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-24 sm:py-32 flex items-center'>
+//         <div className='max-w-3xl space-y-6 text-white'>
+//           <motion.h1
+//             initial={{ opacity: 0, y: 10 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.5 }}
+//             className='text-4xl sm:text-6xl font-semibold leading-tight tracking-tight'
+//           >
+//             Feel better, faster.
+//           </motion.h1>
+
+//           <p className='text-lg sm:text-xl/relaxed text-white/80 max-w-xl'>
+//             24/7 in-home IV therapy, vitamin shots & rapid relief. Licensed
+//             nurses come to your villa, hotel, or home.
+//           </p>
+
+//           <div className='pt-2'>
+//             <a
+//               href={buildWALink()}
+//               target='_blank'
+//               rel='noreferrer'
+//               className='inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur px-6 py-3 text-base text-white'
+//             >
+//               <MessageSquareText className='h-5 w-5' />
+//               Book on WhatsApp
+//               <ArrowRight className='h-4 w-4' />
+//             </a>
+//           </div>
+//         </div>
+//       </div>
+//     </header>
+//   );
+// }
 
 const FADE_UP_ANIMATION_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
@@ -201,7 +267,50 @@ function Hero() {
 }
 
 /* ---------------------------------- USPs -------------------------------- */
+// function USPs() {
+//   const items = [
+//     {
+//       icon: Clock,
+//       title: "24/7 Availability",
+//       desc: "Anytime, anywhere in Bali — we come to you.",
+//     },
+//     {
+//       icon: ShieldCheck,
+//       title: "Licensed Nurses",
+//       desc: "STR/SIPP‑verified team with audited SOPs.",
+//     },
+//     {
+//       icon: Stethoscope,
+//       title: "Doctor Oversight",
+//       desc: "Prescription services require MD approval.",
+//     },
+//     {
+//       icon: Sparkles,
+//       title: "Premium & Discreet",
+//       desc: "Medical‑grade vitamins, sterile setup, privacy‑first.",
+//     },
+//   ];
+//   return (
+//     <section className='border-t border-slate-200'>
+//       <div className='max-w-6xl mx-auto px-4 py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+//         {items.map((it, i) => (
+//           <div
+//             key={i}
+//             className='flex items-start gap-3 bg-white rounded-xl p-4 border border-slate-200'
+//           >
+//             <it.icon className='h-5 w-5 text-emerald-600 mt-0.5' />
+//             <div>
+//               <div className='text-sm font-semibold'>{it.title}</div>
+//               <div className='text-sm text-slate-600'>{it.desc}</div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
+// Varian animasi untuk elemen yang muncul berurutan (staggered)
 const STAGGER_CHILD_VARIANTS = {
   hidden: { opacity: 0, y: 20 },
   visible: (i) => ({
@@ -240,7 +349,7 @@ function USPs() {
   ];
 
   return (
-    <section className='mx-auto px-8 lg:px-24 py-12 '>
+    <section className='max-w-[1200px] mx-auto px-8 py-24'>
       <motion.div
         initial='hidden'
         whileInView='visible'
@@ -269,6 +378,97 @@ function USPs() {
 }
 
 /* ---------------------------- Optimizer Picker --------------------------- */
+// function Optimizer() {
+//   const options = [
+//     { k: "LETHARGIC", icon: Zap },
+//     { k: "NAUSEA", icon: ThermometerSun },
+//     { k: "GUT ISSUES", icon: HeartPulse },
+//     { k: "STRESSED", icon: HeartPulse },
+//     { k: "TIRED", icon: Zap },
+//     { k: "SKIN ISSUES", icon: Syringe },
+//     { k: "BRAIN FOG", icon: Zap },
+//     { k: "INJURED", icon: ThermometerSun },
+//     { k: "JET LAG", icon: Clock },
+//     { k: "HUNGOVER", icon: ThermometerSun },
+//     { k: "DEHYDRATED", icon: ThermometerSun },
+//     { k: "INFLAMMATION", icon: ThermometerSun },
+//   ];
+//   const [selected, setSelected] = useState([]);
+//   const [area, setArea] = useState("");
+//   const [time, setTime] = useState("");
+
+//   const text = useMemo(() => {
+//     const base = `Hi BMC, I need help.\nArea: ${
+//       area || "____"
+//     }\nPreferred time: ${time || "____"}\nSymptoms/Goals: ${
+//       selected.length ? selected.join(", ") : "____"
+//     }\nPlease advise the best treatment.`;
+//     return base;
+//   }, [selected, area, time]);
+
+//   return (
+//     <section id='optimize' className='border-t border-slate-200 bg-slate-50'>
+//       <div className='max-w-6xl mx-auto px-4 py-10'>
+//         <h2 className='text-2xl font-semibold'>
+//           How can we optimize you today?
+//         </h2>
+//         <p className='text-slate-600 mt-1'>
+//           Tap any that apply — we’ll tailor your treatment.
+//         </p>
+//         <div className='mt-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+//           {options.map(({ k, icon: Icon }) => {
+//             const active = selected.includes(k);
+//             return (
+//               <button
+//                 key={k}
+//                 onClick={() =>
+//                   setSelected((s) =>
+//                     s.includes(k) ? s.filter((i) => i !== k) : [...s, k]
+//                   )
+//                 }
+//                 className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${
+//                   active
+//                     ? "border-emerald-600 bg-emerald-50"
+//                     : "border-slate-200 bg-white hover:bg-slate-50"
+//                 }`}
+//               >
+//                 <Icon className='h-4 w-4' /> {k}
+//               </button>
+//             );
+//           })}
+//         </div>
+//         <div className='mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3'>
+//           <div className='flex items-center gap-2 border border-slate-200 rounded-lg px-3 py-2'>
+//             <MapPin className='h-4 w-4 text-slate-500' />
+//             <input
+//               placeholder='Area (e.g., Canggu) or paste Google Maps pin'
+//               className='w-full outline-none text-sm'
+//               value={area}
+//               onChange={(e) => setArea(e.target.value)}
+//             />
+//           </div>
+//           <div className='flex items-center gap-2 border border-slate-200 rounded-lg px-3 py-2'>
+//             <Clock className='h-4 w-4 text-slate-500' />
+//             <input
+//               placeholder='Preferred time today'
+//               className='w-full outline-none text-sm'
+//               value={time}
+//               onChange={(e) => setTime(e.target.value)}
+//             />
+//           </div>
+//           <a
+//             href={buildWALink(text)}
+//             target='_blank'
+//             rel='noreferrer'
+//             className='inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 text-sm'
+//           >
+//             Submit via WhatsApp <ArrowRight className='h-4 w-4' />
+//           </a>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function Optimizer() {
   const options = [
@@ -299,8 +499,8 @@ function Optimizer() {
   }, [selected, area, time]);
 
   return (
-    <section id='optimize' className='bg-[#dae2cb] '>
-      <div className='max-w-6xl mx-auto px-4 py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center'>
+    <section id='optimize' className='bg-[#dae2cb] border-t border-green-900'>
+      <div className='max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center'>
         {/* Left Side - Placeholder Image */}
         <motion.div
           custom={0}
@@ -308,11 +508,11 @@ function Optimizer() {
           whileInView='visible'
           viewport={{ once: true }}
           variants={FADE_UP_ANIMATION_VARIANTS}
-          className='w-full h-[400px] lg:h-[500px] rounded-2xl bg-green-900/10 border border-green-200 flex items-center justify-center overflow-hidden'
+          className='w-full h-[400px] lg:h-[500px] rounded-2xl bg-green-900/10 border border-green-200 flex items-center justify-center'
         >
-          <div className='text-green-700 text-sm tracking-wide '>
-            <img src='https://images.unsplash.com/photo-1488228469209-c141f8bcd723?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-          </div>
+          <span className='text-green-700 text-sm tracking-wide'>
+            Image Placeholder
+          </span>
         </motion.div>
 
         {/* Right Side - Form */}
@@ -324,7 +524,7 @@ function Optimizer() {
             whileInView='visible'
             viewport={{ once: true }}
             variants={FADE_UP_ANIMATION_VARIANTS}
-            className='text-3xl md:text-4xl text-green-950'
+            className='text-3xl md:text-4xl font-semibold text-green-950'
           >
             How can we optimize you today?
           </motion.h2>
@@ -416,7 +616,7 @@ function Optimizer() {
               href={buildWALink(text)}
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-sm shadow-sm'
+              className='inline-flex items-center justify-center gap-2 rounded-lg bg-green-900 hover:bg-green-800 text-white px-5 py-3 text-sm transition-colors'
             >
               Submit via WhatsApp <ArrowRight className='h-4 w-4' />
             </a>
@@ -435,7 +635,6 @@ function FeaturedPackages() {
       price: 2190000,
       points: ["Hydration", "Anti‑nausea & stomach protector", "Probiotics"],
       tag: "Most booked",
-      icon: ThermometerSun,
     },
     {
       title: "NAD+ Anti‑Aging IV (250mg)",
@@ -446,92 +645,62 @@ function FeaturedPackages() {
         "Doctor‑overseen",
       ],
       tag: "Advanced",
-      icon: Sparkles,
     },
     {
       title: "Super Immune Booster",
       price: 2440000,
       points: ["High‑dose Vitamin C", "Antioxidants", "B‑complex & Zinc"],
       tag: "Immunity",
-      icon: ShieldCheck,
     },
   ];
-
   return (
-    <section id='packages' className='bg-[#f7f2ee] border-t border-[#e7e0db]'>
-      <div className='max-w-6xl mx-auto px-4 py-20'>
-        <motion.div
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div
-            custom={0}
-            variants={FADE_UP_ANIMATION_VARIANTS}
-            className='text-center mb-16'
+    <section id='packages' className='border-t border-slate-200'>
+      <div className='max-w-6xl mx-auto px-4 py-10'>
+        <div className='flex items-end justify-between mb-4'>
+          <h2 className='text-2xl font-semibold'>Featured Packages</h2>
+          <a
+            href={buildWALink()}
+            target='_blank'
+            rel='noreferrer'
+            className='hidden sm:inline-flex items-center gap-2 rounded-lg bg-slate-900 hover:bg-black text-white px-4 py-2 text-sm'
           >
-            <span className='text-[#8c7662] font-medium tracking-wide text-sm mb-3 block'>
-              FEATURED PACKAGES
-            </span>
-            <h2 className='text-3xl md:text-[2.5rem] leading-tight font-medium text-[#2c1810] mb-4 tracking-tight'>
-              Popular Treatments
-            </h2>
-            <p className='text-[#594a42] max-w-xl mx-auto text-lg'>
-              Tailored for rapid relief and optimal wellness
-            </p>
-          </motion.div>
-
-          <motion.div
-            custom={1}
-            variants={FADE_UP_ANIMATION_VARIANTS}
-            className='grid md:grid-cols-3 gap-8'
-          >
-            {pkgs.map((p, i) => (
-              <motion.div
-                key={i}
-                custom={i + 2}
-                variants={STAGGER_CHILD_VARIANTS}
-                className='group bg-[#ffffff] rounded-xl overflow-hidden transition-all hover:-translate-y-1 hover:shadow-xl'
-              >
-                <div className='px-8 pt-8 pb-6'>
-                  <div className='mb-6'>
-                    <span className='inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#f7f2ee] text-[#8c7662]'>
-                      {p.tag}
-                    </span>
-                  </div>
-                  <h3 className='text-xl font-medium text-[#2c1810] mb-2'>
-                    {p.title}
-                  </h3>
-                  <div className='text-2xl font-medium text-[#594a42] mb-6'>
-                    {formatIDR(p.price)}
-                  </div>
-
-                  <ul className='space-y-3 text-[#594a42] mb-8'>
-                    {p.points.map((pt, idx) => (
-                      <li key={idx} className='flex items-center gap-3'>
-                        <div className='text-[#8c7662]'>
-                          <p.icon className='h-4 w-4' />
-                        </div>
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
+            Book via WhatsApp <ArrowRight className='h-4 w-4' />
+          </a>
+        </div>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+          {pkgs.map((p, i) => (
+            <div key={i} className='rounded-xl border border-slate-200 p-5'>
+              <div className='flex items-baseline justify-between'>
+                <div className='font-medium flex items-center gap-2'>
+                  <span className='inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 text-[10px] px-2 py-0.5 border border-emerald-100'>
+                    {p.tag}
+                  </span>
+                  {p.title}
                 </div>
-
+                <div className='text-slate-900 font-semibold'>
+                  {formatIDR(p.price)}
+                </div>
+              </div>
+              <ul className='text-sm text-slate-600 mt-2 list-disc ml-4 space-y-1'>
+                {p.points.map((pt, idx) => (
+                  <li key={idx}>{pt}</li>
+                ))}
+              </ul>
+              <div className='mt-4'>
                 <a
                   href={buildWALink(
                     `Hi BMC, I want to book: ${p.title}. My location: ____. Preferred time: ____.`
                   )}
                   target='_blank'
                   rel='noreferrer'
-                  className='block w-full py-4 text-center bg-[#2c1810] hover:bg-[#1a0d09] text-white font-medium transition-colors'
+                  className='inline-flex items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-sm'
                 >
-                  Book This Package
+                  Book Now <ArrowRight className='h-4 w-4' />
                 </a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -582,34 +751,25 @@ function Services() {
     },
   ];
   return (
-    <section id='services' className='bg-white border-t border-gray-100'>
-      <div className='max-w-6xl mx-auto px-4 py-16'>
-        <div className='text-center mb-14'>
-          <div className='inline-block mb-3'>
-            <h2 className='text-3xl md:text-4xl font-semibold text-gray-900'>
-              Services & Pricing
-            </h2>
-            <div className='w-16 h-1 bg-emerald-500 mx-auto mt-4 rounded-full'></div>
-          </div>
-          <p className='text-gray-600 max-w-2xl mx-auto text-lg'>
-            Mobile treatments delivered to your location
-          </p>
-        </div>
-
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+    <section id='services' className='border-t border-slate-200'>
+      <div className='max-w-6xl mx-auto px-4 py-10'>
+        <h2 className='text-2xl font-semibold mb-2'>Services & Pricing</h2>
+        <p className='text-slate-600 mb-6'>
+          Transparent. Mobile. Add boosters during visit.
+        </p>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
           {services.map((s, i) => (
             <ServiceRow key={i} title={s.title} price={s.price} desc={s.desc} />
           ))}
         </div>
-
-        <div className='mt-10 text-center'>
+        <div className='mt-6'>
           <a
             href={buildWALink()}
             target='_blank'
             rel='noreferrer'
-            className='inline-flex items-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-sm shadow-sm'
+            className='inline-flex items-center gap-2 rounded-lg bg-slate-900 hover:bg-black text-white px-5 py-3'
           >
-            Book via WhatsApp <ArrowRight className='h-4 w-4 ml-1' />
+            Book via WhatsApp <ArrowRight className='h-4 w-4' />
           </a>
         </div>
       </div>
@@ -619,85 +779,24 @@ function Services() {
 
 /* ------------------------------ How it Works ----------------------------- */
 function HowItWorks() {
-  const steps = [
-    {
-      title: "Message us on WhatsApp",
-      desc: "Send name + location pin + service",
-      icon: MessageSquareText,
-    },
-    {
-      title: "Quick Consent Form",
-      desc: "We confirm price & dispatch a nurse",
-      icon: ArrowRight,
-    },
-    {
-      title: "Treatment Begins",
-      desc: "Sterile setup. Pay cash or transfer",
-      icon: HeartPulse,
-    },
-  ];
-
   return (
-    <section id='how' className='bg-[#2c1810] text-white'>
-      {/* Kontainer utama dengan layout flex untuk desktop */}
-      <div className='lg:flex'>
-        {/* Kolom Kiri: Konten Teks (3/5) */}
-        <div className='lg:w-1/2'>
-          <div className='mx-auto max-w-2xl px-6 py-24 sm:px-8 lg:px-12'>
-            <div className='text-center lg:text-left mb-'>
-              <span className='block text-sm font-medium tracking-wide text-[#8c7662] mb-3'>
-                BOOKING PROCESS
-              </span>
-              <h2 className='text-3xl font-medium leading-tight tracking-tight md:text-[2.5rem] mb-4'>
-                60 Second Booking Flow
-              </h2>
-              <p className='mx-auto max-w-xl text-lg text-[#8c7662] lg:mx-0'>
-                Simple three-step process for your convenience
-              </p>
-            </div>
-
-            <div className='grid md:grid-cols-3 gap-12 relative'>
-              {steps.map((step, i) => (
-                <div
-                  key={i}
-                  className='group relative text-center md:text-left'
-                >
-                  <div className='mb-8'>
-                    <span className='inline-block text-3xl font-medium tracking-tight text-[#8c7662] mb-2'>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className='text-2xl font-medium tracking-tight mb-3'>
-                      {step.title}
-                    </h3>
-                    <p className='text-lg leading-relaxed text-[#8c7662]'>
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className='mt-8 text-center lg:text-left'>
-              <a
-                href={buildWALink()}
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm text-white shadow-sm hover:bg-emerald-700'
-              >
-                Start Your Booking <ArrowRight className='h-5 w-5' />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Kolom Kanan: Gambar (2/5) */}
-        <div className='lg:w-1/2'>
-          <img
-            src='https://images.unsplash.com/photo-1713865470192-efd903813197?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='Booking process illustration'
-            className='h-full w-full object-cover'
-          />
-        </div>
+    <section id='how' className='border-t border-slate-200 bg-slate-50'>
+      <div className='max-w-6xl mx-auto px-4 py-10'>
+        <h2 className='text-2xl font-semibold mb-4'>60‑Second Booking Flow</h2>
+        <ol className='space-y-3 text-slate-700'>
+          <li>
+            <b>1) Message us on WhatsApp.</b> Send name + location pin +
+            service.
+          </li>
+          <li>
+            <b>2) 1‑minute consent form.</b> We confirm price & dispatch a
+            nurse.
+          </li>
+          <li>
+            <b>3) Nurse arrives & treats.</b> Sterile setup. Pay cash or
+            transfer. Next‑day check‑in.
+          </li>
+        </ol>
       </div>
     </section>
   );
@@ -707,49 +806,28 @@ function HowItWorks() {
 function Reviews() {
   const items = [
     {
-      quote:
-        "Came to my villa and fixed me up — incredible service and attention to detail. Would highly recommend!",
-      name: "Alex Thompson",
-      location: "Los Angeles, USA",
+      quote: "Came to my villa and fixed me up — great service!",
+      name: "Traveler from LA",
     },
     {
-      quote:
-        "Very professional team, excellent communication, and the treatment made me feel amazing after.",
-      name: "Sarah Chen",
-      location: "Singapore",
+      quote: "Very professional. I felt amazing after.",
+      name: "Founder, Singapore",
     },
-    {
-      quote:
-        "Fast, discreet, and friendly. Perfect for our hotel guests who need immediate care.",
-      name: "Made Wijaya",
-      location: "Canggu, Bali",
-    },
+    { quote: "Fast, discreet, and friendly.", name: "Hotel GM, Canggu" },
   ];
   return (
-    <section className='bg-white'>
-      <div className='max-w-7xl mx-auto px-6 py-24 sm:py-32'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-4xl font-medium tracking-tight text-gray-900'>
-            What Our Clients Say
-          </h2>
-          <p className='text-gray-600 mt-4 max-w-2xl mx-auto text-lg leading-8'>
-            Trusted by travellers across Bali — service that arrives, cares, and
-            restores.
-          </p>
-        </div>
-
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+    <section className='border-t border-slate-200'>
+      <div className='max-w-6xl mx-auto px-4 py-10'>
+        <h2 className='text-2xl font-semibold mb-4'>What clients say</h2>
+        <div className='grid md:grid-cols-3 gap-4'>
           {items.map((t, i) => (
             <figure
               key={i}
-              className='bg-slate-50/80 rounded-2xl p-8 flex flex-col'
+              className='rounded-xl border border-slate-200 p-5 bg-white'
             >
-              <blockquote className='text-gray-800 text-lg leading-relaxed flex-grow'>
-                “{t.quote}”
-              </blockquote>
-              <figcaption className='mt-6'>
-                <div className='font-semibold text-gray-900'>{t.name}</div>
-                <div className='text-sm text-gray-500 mt-1'>{t.location}</div>
+              <blockquote className='text-slate-700'>“{t.quote}”</blockquote>
+              <figcaption className='mt-2 text-sm text-slate-500'>
+                — {t.name}
               </figcaption>
             </figure>
           ))}
@@ -784,100 +862,19 @@ function FAQ() {
     },
   ];
   return (
-    <section
-      id='faq'
-      className='w-full bg-[#0f2e15] text-[rgb(252,254,239)] '
-      aria-label='FAQ'
-    >
-      <div className='max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 py-12 pb-36'>
-        {/* LEFT: Header */}
-        <div className='flex flex-col justify-start'>
-          <div className='leading-none'>
-            {/* "Frequently" */}
-            <h2
-              className='text-[42px] md:text-[56px] lg:text-[64px] font-[InstrumentSans]'
-              style={{ letterSpacing: "-0.05em", lineHeight: "110%" }}
-            >
-              <span style={{ whiteSpace: "nowrap", display: "inline-block" }}>
-                Frequently
-              </span>
-              <br />
-              <span
-                className='italic'
-                style={{
-                  color: "rgb(250,253,135)",
-                  fontFamily: "'Playfair Display', serif",
-                  display: "inline-block",
-                }}
-              >
-                asked
-              </span>{" "}
-              <span style={{ display: "inline-block" }}>questions</span>
-            </h2>
-          </div>
-
-          <p className='mt-6 text-base max-w-sm text-[rgb(252,254,239)]/90'>
-            Everything you need to know about the product and billing.
-          </p>
-        </div>
-
-        {/* RIGHT: FAQ list */}
-        <div className='flex flex-col justify-start'>
-          <div className='w-full'>
-            {faqs.map((item, idx) => {
-              const isLast = idx === faqs.length - 1;
-              return (
-                <details
-                  key={idx}
-                  className='w-full border-b border-yellow-300'
-                  // keep closed by default; users can open
-                >
-                  <summary
-                    className='flex items-center justify-between px-6 py-6 cursor-pointer list-none outline-none'
-                    tabIndex={0}
-                    style={{
-                      color: "rgb(252,254,239)",
-                      // border-bottom handled by wrapper below to match framer file
-                    }}
-                  >
-                    <p className='m-0 text-lg md:text-xl leading-tight'>
-                      {item.q}
-                    </p>
-
-                    {/* arrow */}
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='24'
-                      height='24'
-                      viewBox='0 0 24 24'
-                      fill='none'
-                      stroke='rgb(252,254,239)'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      className='h-6 w-6 transition-transform duration-150'
-                      aria-hidden
-                      style={{
-                        transformOrigin: "center",
-                      }}
-                    >
-                      <polyline points='6 9 12 15 18 9' />
-                    </svg>
-                  </summary>
-                  <div
-                    className='w-full'
-                    style={{
-                      height: 1,
-                      marginTop: 0,
-                    }}
-                  />
-                  <div className='px-6 pb-4 text-[rgb(252,254,239)]/80 text-base'>
-                    {item.a}
-                  </div>
-                </details>
-              );
-            })}
-          </div>
+    <section id='faq' className='border-t border-slate-200 bg-slate-50'>
+      <div className='max-w-6xl mx-auto px-4 py-10'>
+        <h2 className='text-2xl font-semibold mb-4'>FAQ</h2>
+        <div className='divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden'>
+          {faqs.map((f, i) => (
+            <details key={i} className='group'>
+              <summary className='flex items-center justify-between cursor-pointer px-4 py-4 bg-white hover:bg-slate-50'>
+                <span className='font-medium'>{f.q}</span>
+                <ChevronDown className='h-4 w-4 text-slate-500 group-open:rotate-180 transition' />
+              </summary>
+              <div className='px-4 pb-4 text-slate-600 bg-white'>{f.a}</div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
@@ -982,12 +979,12 @@ function formatIDR(num) {
 
 function ServiceRow({ title, price, desc }) {
   return (
-    <div className='bg-gray-50 rounded-lg p-5 hover:shadow-sm transition-shadow'>
-      <div className='flex items-baseline justify-between mb-2'>
-        <h3 className='font-medium text-lg text-gray-900'>{title}</h3>
-        <div className='text-emerald-600 font-semibold'>{formatIDR(price)}</div>
+    <div className='border border-slate-200 rounded-xl px-4 py-4'>
+      <div className='flex items-baseline justify-between'>
+        <div className='font-medium'>{title}</div>
+        <div className='text-slate-900 font-semibold'>{formatIDR(price)}</div>
       </div>
-      <div className='text-gray-600'>{desc}</div>
+      <div className='text-sm text-slate-600 mt-1'>{desc}</div>
     </div>
   );
 }
