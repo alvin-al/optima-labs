@@ -27,7 +27,7 @@ function buildWALink(text = DEFAULT_TEXT) {
 
 export default function BMCPage() {
   return (
-    <div className='min-h-screen bg-white text-slate-900 selection:bg-emerald-100/80'>
+    <div className='min-h-screen bg-[#dae2cb] text-slate-900 selection:bg-emerald-100/80'>
       <TopBar />
       <Header />
       <Hero />
@@ -40,8 +40,8 @@ export default function BMCPage() {
       <FAQ />
       <ContactCTA />
       <Footer />
-      {/* <QuickBookDock />
-      <Schema /> */}
+      {/* <QuickBookDock /> */}
+      <Schema />
     </div>
   );
 }
@@ -70,7 +70,7 @@ function Header() {
     <div className='sticky top-0 z-40 bg-[#dae2cb] backdrop-blur'>
       <div className='max-w-6xl mx-auto px-4 py-3 flex items-center justify-between'>
         <div className='flex items-center gap-2'>
-          <Sparkles className='h-5 w-5 text-green-950' />
+          <img src='/public/OptimaLabsLogo.png' className='w-8' />
           <span className='font-medium tracking-tight'>Optima Labs</span>
         </div>
         <nav className='hidden md:flex items-center gap-6 text-sm text-green-950'>
@@ -125,7 +125,7 @@ const buttonHover = {
 
 function Hero() {
   return (
-    <header className='relative w-full h-[90vh] min-h-[600px] flex items-center justify-center text-center overflow-hidden text-white'>
+    <header className='relative w-full h-[90vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden text-white'>
       {/* Background & Overlay */}
       <div className='absolute inset-0 bg-slate-900 -z-10' />
       <motion.div
@@ -141,12 +141,12 @@ function Hero() {
       <motion.div
         initial='hidden'
         animate='visible'
-        className='relative z-10 max-w-3xl mx-auto px-8 flex flex-col items-center gap-6'
+        className='relative z-10 max-w-3xl mx-auto px-4 sm:px-8 flex flex-col items-center gap-4 sm:gap-6'
       >
         <motion.p
           custom={0}
           variants={FADE_UP_ANIMATION_VARIANTS}
-          className='text-sm uppercase tracking-widest text-white/60'
+          className='text-xs sm:text-sm uppercase tracking-widest text-white/60'
         >
           Your Sanctuary for Wellness
         </motion.p>
@@ -154,17 +154,18 @@ function Hero() {
         <motion.h1
           custom={1}
           variants={FADE_UP_ANIMATION_VARIANTS}
-          className='text-6xl md:text-7xl leading-tight tracking-[0.02em]'
+          className='text-4xl sm:text-5xl md:text-7xl leading-tight tracking-[0.02em]'
         >
           Feel Better, Faster.
-          <br />
+          <br className='hidden sm:block' />
+          <span className='sm:hidden'> </span>
           24/7 In‑Home Medical Care.
         </motion.h1>
 
         <motion.p
           custom={2}
           variants={FADE_UP_ANIMATION_VARIANTS}
-          className='text-lg text-white/80 leading-8 max-w-2xl'
+          className='text-base sm:text-lg text-white/80 leading-relaxed sm:leading-8 max-w-2xl px-2'
         >
           IV therapy, vitamin injections & rapid relief delivered to your villa,
           hotel, or home by licensed nurses.
@@ -174,23 +175,23 @@ function Hero() {
         <motion.div
           custom={3}
           variants={FADE_UP_ANIMATION_VARIANTS}
-          className='flex flex-col sm:flex-row items-center justify-center gap-4 pt-4'
+          className='flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 w-full px-4'
         >
           <motion.a
             href={buildWALink()}
             target='_blank'
             rel='noreferrer'
             whileHover={buttonHover}
-            className='inline-flex items-center justify-center gap-2 bg-white/10 text-white rounded-full px-8 py-3 text-base shadow-sm hover:bg-emerald-700/50 transition-colors backdrop-blur hover:backdrop-blur-md'
+            className='w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 text-white rounded-full px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base shadow-sm hover:bg-emerald-700/50 transition-colors backdrop-blur hover:backdrop-blur-md'
           >
-            <MessageSquareText className='h-5 w-5' />
+            <MessageSquareText className='h-4 w-4 sm:h-5 sm:w-5' />
             Book via WhatsApp
           </motion.a>
 
           <motion.a
             href='#services'
             whileHover={buttonHover}
-            className='inline-flex items-center justify-center gap-2 border border-white/60 text-white/90 rounded-full px-8 py-3 text-base hover:bg-white/5 transition-colors'
+            className='w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/60 text-white/90 rounded-full px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base hover:bg-white/5 transition-colors'
           >
             View Services
           </motion.a>
@@ -585,13 +586,10 @@ function Services() {
     <section id='services' className='bg-white border-t border-gray-100'>
       <div className='max-w-6xl mx-auto px-4 py-16'>
         <div className='text-center mb-14'>
-          <div className='inline-block mb-3'>
-            <h2 className='text-3xl md:text-4xl font-semibold text-gray-900'>
-              Services & Pricing
-            </h2>
-            <div className='w-16 h-1 bg-emerald-500 mx-auto mt-4 rounded-full'></div>
-          </div>
-          <p className='text-gray-600 max-w-2xl mx-auto text-lg'>
+          <h2 className='text-3xl md:text-[2.5rem] leading-tight font-medium text-[#2c1810] mb-4 tracking-tight'>
+            Services & Pricing
+          </h2>
+          <p className='text-[#594a42] max-w-xl mx-auto text-lg'>
             Mobile treatments delivered to your location
           </p>
         </div>
@@ -726,13 +724,13 @@ function Reviews() {
     },
   ];
   return (
-    <section className='bg-white'>
+    <section className='bg-[#0f2e15] '>
       <div className='max-w-7xl mx-auto px-6 py-24 sm:py-32'>
         <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-4xl font-medium tracking-tight text-gray-900'>
+          <h2 className='text-3xl md:text-4xl font-medium tracking-tight text-white'>
             What Our Clients Say
           </h2>
-          <p className='text-gray-600 mt-4 max-w-2xl mx-auto text-lg leading-8'>
+          <p className='text-gray-400 mt-4 max-w-2xl mx-auto text-lg leading-8'>
             Trusted by travellers across Bali — service that arrives, cares, and
             restores.
           </p>
@@ -740,16 +738,13 @@ function Reviews() {
 
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
           {items.map((t, i) => (
-            <figure
-              key={i}
-              className='bg-slate-50/80 rounded-2xl p-8 flex flex-col'
-            >
-              <blockquote className='text-gray-800 text-lg leading-relaxed flex-grow'>
+            <figure key={i} className='border border-white p-8 flex flex-col'>
+              <blockquote className='text-white text-lg leading-relaxed flex-grow'>
                 “{t.quote}”
               </blockquote>
               <figcaption className='mt-6'>
-                <div className='font-semibold text-gray-900'>{t.name}</div>
-                <div className='text-sm text-gray-500 mt-1'>{t.location}</div>
+                <div className='font-semibold text-white'>{t.name}</div>
+                <div className='text-sm text-gray-400 mt-1'>{t.location}</div>
               </figcaption>
             </figure>
           ))}
