@@ -70,7 +70,9 @@ function Header() {
     <div className='sticky top-0 z-40 bg-[#dae2cb] backdrop-blur'>
       <div className='max-w-6xl mx-auto px-4 py-3 flex items-center justify-between'>
         <div className='flex items-center gap-2'>
-          <img src='/public/OptimaLabsLogo.png' className='w-8' />
+          <div className='w-8'>
+            <img src='/OptimaLabsLogo.png' />
+          </div>
           <span className='font-medium tracking-tight'>Optima Labs</span>
         </div>
         <nav className='hidden md:flex items-center gap-6 text-sm text-green-950'>
