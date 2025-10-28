@@ -19,7 +19,7 @@ import {
 
 const WHATSAPP_NUMBER = "6285817778911"; // e.g., 6281234567890
 
-const DEFAULT_TEXT = `Hi BMC, I'd like to book an in‑villa treatment.\nName: ____\nLocation pin: ____\nArea (Canggu/Seminyak/Ubud/Uluwatu/Other): ____\nSymptoms/Goals: ____\nService (if known): ____\nPreferred time today: ____\nNotes: ____`;
+const DEFAULT_TEXT = `Hi Optima Labs, I'd like to book an in‑villa treatment.\nName: ____\nLocation pin: ____\nArea (Canggu/Seminyak/Ubud/Uluwatu/Other): ____\nSymptoms/Goals: ____\nService (if known): ____\nPreferred time today: ____\nNotes: ____`;
 
 function buildWALink(text = DEFAULT_TEXT) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -294,7 +294,7 @@ function Optimizer() {
   const [time, setTime] = useState("");
 
   const text = useMemo(() => {
-    return `Hi BMC, I need help.\nArea: ${area || "____"}\nPreferred time: ${
+    return `Hi Optima Labs, I need help.\nArea: ${area || "____"}\nPreferred time: ${
       time || "____"
     }\nSymptoms/Goals: ${
       selected.length ? selected.join(", ") : "____"
@@ -523,7 +523,7 @@ function FeaturedPackages() {
 
                 <a
                   href={buildWALink(
-                    `Hi BMC, I want to book: ${p.title}. My location: ____. Preferred time: ____.`
+                    `Hi Optima Labs, I want to book: ${p.title}. My location: ____. Preferred time: ____.`
                   )}
                   target='_blank'
                   rel='noreferrer'
@@ -929,7 +929,7 @@ function Footer() {
     <footer className='border-t border-slate-200'>
       <div className='max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'>
         <div>
-          <div className='font-semibold'>BMC — Bali Medical Concierge</div>
+          <div className='font-semibold'>Optima Labs</div>
           <div className='text-slate-600 text-sm'>
             24/7 in‑home care • WhatsApp‑first • Licensed • Doctor‑overseen
           </div>
@@ -996,7 +996,7 @@ function Schema() {
   const json = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "name": "BMC — Bali Medical Concierge",
+    "name": "Optima Labs",
     "areaServed": "Bali, Indonesia",
     "sameAs": [buildWALink()],
     "telephone": WHATSAPP_NUMBER,
