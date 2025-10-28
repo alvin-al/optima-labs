@@ -888,7 +888,7 @@ function ContactCTA() {
       <div className='max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 items-center'>
         <div>
           <h2 className='text-4xl font-semibold'>Get in touch</h2>
-          <p className='text-slate-600 mt-1 text-lg'>
+          <p className='text-slate-600 mt-1 text-xl'>
             We’ll guide you through the steps and dispatch a nurse to your
             villa, hotel, or home.
           </p>
@@ -913,7 +913,7 @@ function ContactCTA() {
           </ul>
         </div>
         <div
-          className='rounded-2xl border border-slate-200 h-[600px] overflow-hidden bg-cover bg-center'
+          className='rounded-2xl border border-slate-200 overflow-hidden bg-cover bg-center'
           aria-label='Calm Bali villa setting'
         >
           <img src='/manwithiv.png' />
