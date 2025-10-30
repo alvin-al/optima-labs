@@ -17,10 +17,9 @@ import {
   Languages,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "6285817778911"; // e.g., 6281234567890
+const WHATSAPP_NUMBER = "6285817778911";
 
-const DEFAULT_TEXT = `Hi Optima Labs team, I’d like to book a treatment.\n\nLocation: ____\nPreferred time: ____\nSymptoms / Goals: ____\n\nCould you please recommend the best IV or treatment for me?`;
-
+const DEFAULT_TEXT = `Hi Optima Labs team, I’d like to book a treatment.\n\n*Name:* \n*Location:* \n*Preferred time:* \n*Symptoms / Goals:* \n*Notes:* \n\nCould you please recommend the most suitable IV or treatment?`;
 
 function buildWALink(text = DEFAULT_TEXT) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -295,9 +294,9 @@ function Optimizer() {
   const [time, setTime] = useState("");
 
   const text = useMemo(() => {
-    return `Hi Optima Labs, I need help.\nArea: ${area || "____"}\nPreferred time: ${
-      time || "____"
-    }\nSymptoms/Goals: ${
+    return `Hi Optima Labs, I need help.\nArea: ${
+      area || "____"
+    }\nPreferred time: ${time || "____"}\nSymptoms/Goals: ${
       selected.length ? selected.join(", ") : "____"
     }\nPlease advise the best treatment.`;
   }, [selected, area, time]);
