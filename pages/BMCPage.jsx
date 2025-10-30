@@ -523,7 +523,7 @@ function FeaturedPackages() {
 
                 <a
                   href={buildWALink(
-                    `Hi Optima Labs, I want to book: ${p.title}. My location: ____. Preferred time: ____.`
+                    `Hi Optima Labs, I want to book: ${p.title}. \nMy location: ____. Preferred time: ____.`
                   )}
                   target='_blank'
                   rel='noreferrer'
