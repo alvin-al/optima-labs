@@ -294,11 +294,9 @@ function Optimizer() {
   const [time, setTime] = useState("");
 
   const text = useMemo(() => {
-    return `Hi Optima Labs team, I’d like to book a treatment.\n\n*Name:* ____\n*Location:* ${
-      area || "____"
-    }\n*Preferred time:* ${time || "____"}\n*Symptoms / Goals:* ${
-      selected.length ? selected.join(", ") : "____"
-    }\n*Notes:* ____\n\nCould you please recommend the most suitable IV or treatment?`;
+    return `Hi Optima Labs team, I’d like to book a treatment.\n\n*Name:* \n*Location:* ${area}\n*Preferred time:* ${time}\n*Symptoms / Goals:* ${
+      selected.length ? selected.join(", ") : ""
+    }\n*Notes:*\n\nCould you please recommend the most suitable IV or treatment?`;
   }, [selected, area, time]);
 
   return (
