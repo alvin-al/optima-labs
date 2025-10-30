@@ -19,7 +19,8 @@ import {
 
 const WHATSAPP_NUMBER = "6285817778911"; // e.g., 6281234567890
 
-const DEFAULT_TEXT = `Hi Optima Labs, I'd like to book an in‑villa treatment.\nName: ____\nLocation pin: ____\nArea (Canggu/Seminyak/Ubud/Uluwatu/Other): ____\nSymptoms/Goals: ____\nService (if known): ____\nPreferred time today: ____\nNotes: ____`;
+const DEFAULT_TEXT = `Hi Optima Labs team, I’d like to book a treatment.\n\nLocation: ____\nPreferred time: ____\nSymptoms / Goals: ____\n\nCould you please recommend the best IV or treatment for me?`;
+
 
 function buildWALink(text = DEFAULT_TEXT) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
